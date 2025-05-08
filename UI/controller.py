@@ -9,4 +9,27 @@ class Controller:
         self._model = model
 
     def handleCalcola(self, e):
-        pass
+        a = int(self._view._txtAnno.value)
+        if a is None or a == "":
+            self._view.create_alert("Inserire l'anno'")
+            return
+        if a < 1816 or a > 2016:
+            self._view._txt_result.controls.clear()
+            self._view._txt_result.controls.append(ft.Text("L'anno deve essere tra il 1816 e il 2016"))
+            self._view.update_page()
+            return
+
+        self._model.build_graph(a)
+        numNodi = self._model.getNumNodes()
+        numArchi = self._model.getNumEdges()
+        self._view._txt_result.controls.append(ft.Text(f"Numero di nodi: {numNodi}"))
+        self._view._txt_result.controls.append(ft.Text(f"Numero di archi: {numArchi}"))
+        self._view._txt_result.controls.append(ft.Text(f"Numero di componenti connesse: {self._model.getNumConnesse()}"))
+        for stato in self._model.grafo:
+            self._view._txt_result.controls.append(ft.Text(f"Stato: {stato} -- numero confinanti: {self._model.getNumeroConfinanti(stato)}"))
+
+
+        self._view.update_page()
+
+
+
