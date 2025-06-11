@@ -1,4 +1,5 @@
 import flet as ft
+from click import clear
 
 
 class View(ft.UserControl):
@@ -19,7 +20,6 @@ class View(ft.UserControl):
         self._txt_result = None
 
     def load_interface(self):
-        # title
         self._title = ft.Text("Country Borders", color="blue", size=24)
         self._page.controls.append(self._title)
 

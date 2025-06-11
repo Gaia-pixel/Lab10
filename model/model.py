@@ -19,7 +19,7 @@ class Model:
         for n in self.nodi:
             self.idmap[n.CCode] = n
 
-        borders = DAO.get_edge(self.idmap, anno) # lista
+        borders = DAO.get_edge(self.idmap, anno) # lista di confini
         for b in borders:
             self.grafo.add_edge(b.state1no, b.state2no)
 

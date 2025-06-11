@@ -47,7 +47,7 @@ class DAO():
             cursor.execute(query, (anno,))
 
             for row in cursor:
-                c1= idmap[row['state1no']] # prendo lo stato1 della prima coppia di stati
+                c1 = idmap[row['state1no']] # prendo lo stato1 della prima coppia di stati
                 c2 = idmap[row['state2no']]
                 result.append(Border(c1,c2)) # inserisco nel border i due stati di ogni riga che mi restituisce il db
 
